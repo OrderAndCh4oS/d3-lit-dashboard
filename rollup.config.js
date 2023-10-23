@@ -10,9 +10,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
 export default {
-  input: './dist/my-element.js',
+  input: './dist/line-chart.js',
   output: {
-    file: 'my-element.bundled.js',
+    file: 'line-chart.bundled.js',
     format: 'esm',
   },
   onwarn(warning) {

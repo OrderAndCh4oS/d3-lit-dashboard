@@ -5,62 +5,74 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><my-element> ⌲ Home</title>
+    <title><line-chart> ⌲ Home</title>
     <link rel="stylesheet" href="docs.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Mono">
     <link href="prism-okaidia.css" rel="stylesheet" />
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="/node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="my-element.bundled.js"></script>
+    <script type="module" src="line-chart.bundled.js"></script>
   </head>
   <body>
     
 <header>
-  <h1>&lt;my-element></h1>
-  <h2>A web component just for me.</h2>
+  <h1>&lt;line-chart></h1>
+  <h2>A web component just for line charts</h2>
 </header>
     
 <nav>
   <a href="">Home</a>
-  <a href="examples/">Examples</a>
   <a href="api/">API</a>
-  <a href="install/">Install</a>
 </nav>
     <div id="main-wrapper">
       <main>
-        <h1>&lt;my-element&gt;</h1>
-<p><code>&lt;my-element&gt;</code> is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.</p>
-<h2>As easy as HTML</h2>
-<section class="columns">
-  <div>
-<p><code>&lt;my-element&gt;</code> is just an HTML element. You can it anywhere you can use HTML!</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-element</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-element</span><span class="token punctuation">></span></span></code></pre>
-  </div>
-  <div>
-<p><my-element></my-element></p>
-  </div>
-</section>
-<h2>Configure with attributes</h2>
-<section class="columns">
-  <div>
-<p><code>&lt;my-element&gt;</code> can be configured with attributed in plain HTML.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>HTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-element</span><span class="token punctuation">></span></span></code></pre>
-  </div>
-  <div>
-<p><my-element name="HTML"></my-element></p>
-  </div>
-</section>
-<h2>Declarative rendering</h2>
-<section class="columns">
-  <div>
-<p><code>&lt;my-element&gt;</code> can be used with declarative rendering libraries like Angular, React, Vue, and lit-html</p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>html<span class="token punctuation">,</span> render<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lit-html'</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'lit-html'</span><span class="token punctuation">;</span><br><br><span class="token function">render</span><span class="token punctuation">(</span><br>  html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>    &lt;h2>This is a &amp;lt;my-element&amp;gt;&lt;/h2><br>    &lt;my-element .name=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>&lt;/my-element><br>  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>  document<span class="token punctuation">.</span>body<br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-  </div>
-  <div>
-<h2>This is a &lt;my-element&gt;</h2>
-<my-element name="lit-html"></my-element>
-  </div>
-</section>
+        <h1><code>line-chart</code> Web Component</h1>
+<p>A custom web component built with LitElement and D3.js for rendering line charts.</p>
+<h2>🚀 Features</h2>
+<ul>
+<li>📱 <strong>Responsive Design</strong>: Adapts to the width of its container.</li>
+<li>🎨 <strong>Custom Theming</strong>: Supports both light and dark themes.</li>
+<li>🔍 <strong>Tooltips</strong>: Hover over data points to get more detailed information.</li>
+<li>🌊 <strong>Smooth Curve Option</strong>: Can render as a smooth curve or a straight line.</li>
+<li>📊 <strong>Multiple Lines</strong>: Supports rendering of multiple lines in one chart.</li>
+</ul>
+<h2>📦 Attributes</h2>
+<p>The example showcases the following attributes:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>line-chart</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1280<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>400<span class="token punctuation">"</span></span> <span class="token attr-name">xAxisLabel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Date<span class="token punctuation">"</span></span> <span class="token attr-name">scaleType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ratio<span class="token punctuation">"</span></span> <br>           <span class="token attr-name">yAxisLabel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Value<span class="token punctuation">"</span></span> <span class="token attr-name">strokeWidth</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4<span class="token punctuation">"</span></span> <span class="token attr-name">pointRadius</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4<span class="token punctuation">"</span></span> <span class="token attr-name">smoothCurve</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <br>           <span class="token attr-name">fillLine</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">theme</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>line-chart</span><span class="token punctuation">></span></span></code></pre>
+<ul>
+<li><code>id</code>: The unique identifier for the chart component. E.g., &quot;chart&quot;.</li>
+<li><code>width</code>: Width of the chart. E.g., &quot;1280&quot;.</li>
+<li><code>height</code>: Height of the chart. E.g., &quot;400&quot;.</li>
+<li><code>xAxisLabel</code>: Label for the x-axis. E.g., &quot;Date&quot;.</li>
+<li><code>yAxisLabel</code>: Label for the y-axis. E.g., &quot;Value&quot;.</li>
+<li><code>scaleType</code>: Determines how the chart should scale. E.g., &quot;ratio&quot;.</li>
+<li><code>strokeWidth</code>: Width of the line stroke. E.g., &quot;4&quot;.</li>
+<li><code>pointRadius</code>: Radius of each data point in the chart. E.g., &quot;4&quot;.</li>
+<li><code>smoothCurve</code>: Determines if the chart has smooth curves. Accepts &quot;true&quot; or &quot;false&quot;.</li>
+<li><code>fillLine</code>: Determines if the area under the line is filled. Accepts &quot;true&quot; or &quot;false&quot;.</li>
+<li><code>theme</code>: Chart theme. E.g., &quot;dark&quot;.</li>
+</ul>
+<h2>📈 Sample Data and Chart Configuration</h2>
+<p>You can provide the chart with data and further configuration using JavaScript:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> colours <span class="token operator">=</span> <span class="token punctuation">[</span><br>    <span class="token string">"#E63946"</span><span class="token punctuation">,</span><br>    <span class="token string">"#7cb06b"</span><span class="token punctuation">,</span><br>    <span class="token string">"#6ab8bb"</span><span class="token punctuation">,</span><br>    <span class="token string">"#457B9D"</span><span class="token punctuation">,</span><br>    <span class="token string">"#cc34b3"</span><span class="token punctuation">,</span><br>    <span class="token string">"#F4A261"</span><br><span class="token punctuation">]</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> xs <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'2023-01-0'</span> <span class="token operator">+</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> ys <span class="token operator">=</span> xs<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">~</span><span class="token operator">~</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> sampleData <span class="token operator">=</span> <span class="token punctuation">{</span>xs<span class="token punctuation">,</span> ys<span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> chartElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'chart'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>chartElement<span class="token punctuation">.</span>data <span class="token operator">=</span> sampleData<span class="token punctuation">;</span><br>chartElement<span class="token punctuation">.</span>colours <span class="token operator">=</span> colours<span class="token punctuation">;</span></code></pre>
+<p>In this example:</p>
+<ul>
+<li><code>colours</code>: An array containing the hex codes for the lines in the chart.</li>
+<li><code>xs</code>: An array representing the x-axis data. In this case, a sequence of dates.</li>
+<li><code>ys</code>: A multi-dimensional array that corresponds to y-axis data for the various lines in the chart.</li>
+<li><code>sampleData</code>: An object comprising <code>xs</code> and <code>ys</code> data that will be used for rendering the chart.</li>
+</ul>
+<p>The last lines of the JavaScript code link the <code>sampleData</code> and <code>colours</code> to the <code>&lt;line-chart&gt;</code> element.</p>
+<h2>🎨 Styling</h2>
+<p>Customize the component's appearance using these CSS variables:</p>
+<ul>
+<li><code>--bg-color</code>: Background color of the chart.</li>
+<li><code>--axis-color</code>: Color of the axes.</li>
+<li><code>--axis-text-color</code>: Color of the axis labels.</li>
+<li><code>--tooltip-bg-color</code>: Background color of the tooltip.</li>
+<li><code>--tooltip-text-color</code>: Color of the tooltip text.</li>
+<li><code>--tooltip-radius</code>: Border radius of the tooltip.</li>
+</ul>
 
       </main>
     </div>

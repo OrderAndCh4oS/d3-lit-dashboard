@@ -1,6 +1,5 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import {playwrightLauncher} from '@web/test-runner-playwright';
-import {puppeteerLauncher} from '@web/test-runner-puppeteer';
 
 const mode = process.env.MODE || 'dev';
 if (!['dev', 'prod'].includes(mode)) {
@@ -8,7 +7,7 @@ if (!['dev', 'prod'].includes(mode)) {
 }
 
 export default {
-    browsers: [puppeteerLauncher()],
+    browsers: [playwrightLauncher()],
     files: 'test/**/*.test.ts',  // Adjust your test file pattern if needed
     nodeResolve: {exportConditions: mode === 'dev' ? ['development'] : []},
     preserveSymlinks: true,

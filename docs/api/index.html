@@ -5,35 +5,33 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><my-element> ⌲ Docs</title>
+    <title><line-chart> ⌲ Docs</title>
     <link rel="stylesheet" href="../docs.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Mono">
     <link href="../prism-okaidia.css" rel="stylesheet" />
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="/node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="../my-element.bundled.js"></script>
+    <script type="module" src="../line-chart.bundled.js"></script>
   </head>
   <body>
     
 <header>
-  <h1>&lt;my-element></h1>
-  <h2>A web component just for me.</h2>
+  <h1>&lt;line-chart></h1>
+  <h2>A web component just for line charts</h2>
 </header>
     
 <nav>
   <a href="../">Home</a>
-  <a href="../examples/">Examples</a>
   <a href="">API</a>
-  <a href="../install/">Install</a>
 </nav>
     <div id="main-wrapper">
       <main>
         
      <h1>API</h1>
      
-       <h2>&lt;my-element></h2>
+       <h2>&lt;line-chart></h2>
        <div>
-         An example element.
+         
        </div>
        
    <h3>Attributes</h3>
@@ -43,11 +41,64 @@
      </tr>
      
        <tr>
-         <td>name</td><td>The name to say "Hello" to.</td><td>string</td><td>'World'</td>
+         <td>id</td><td></td><td>string</td><td>'line-chart'</td>
        </tr>
      
        <tr>
-         <td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td>0</td>
+         <td>strokeWidth</td><td></td><td>number</td><td>2</td>
+       </tr>
+     
+       <tr>
+         <td>pointRadius</td><td></td><td>number</td><td>2.5</td>
+       </tr>
+     
+       <tr>
+         <td>data</td><td></td><td>ChartData</td><td>{xs: [], ys: [[]]}</td>
+       </tr>
+     
+       <tr>
+         <td>margin</td><td></td><td>Margin</td><td>{top: 50, right: 40, bottom: 80, left: 80}</td>
+       </tr>
+     
+       <tr>
+         <td>colours</td><td></td><td>string[]</td><td>[
+            "#FF6D75",
+            "#FFD23F",
+            "#14FFEC",
+            "#A88BEB",
+            "#FF9642",
+            "#53D8FB",
+            "#C0D860",
+            "#F25DFC",
+        ]</td>
+       </tr>
+     
+       <tr>
+         <td>scaleType</td><td></td><td>'ratio' | 'fixed-height'</td><td>'fixed-height'</td>
+       </tr>
+     
+       <tr>
+         <td>width</td><td></td><td></td><td></td>
+       </tr>
+     
+       <tr>
+         <td>height</td><td></td><td>number</td><td>400</td>
+       </tr>
+     
+       <tr>
+         <td>smoothCurve</td><td></td><td>boolean</td><td>false</td>
+       </tr>
+     
+       <tr>
+         <td>fillLine</td><td></td><td>boolean</td><td>false</td>
+       </tr>
+     
+       <tr>
+         <td>xAxisLabel</td><td></td><td>string | null</td><td>null</td>
+       </tr>
+     
+       <tr>
+         <td>yAxisLabel</td><td></td><td>string | null</td><td>null</td>
        </tr>
      
    </table>
@@ -60,11 +111,100 @@
      </tr>
      
        <tr>
-         <td>name</td><td>name</td><td>The name to say "Hello" to.</td><td>string</td><td>'World'</td>
+         <td>SCALE_TYPES</td><td></td><td></td><td>array</td><td>['ratio', 'fixed-height']</td>
        </tr>
      
        <tr>
-         <td>count</td><td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td>0</td>
+         <td>id</td><td>id</td><td></td><td>string</td><td>'line-chart'</td>
+       </tr>
+     
+       <tr>
+         <td>strokeWidth</td><td>strokeWidth</td><td></td><td>number</td><td>2</td>
+       </tr>
+     
+       <tr>
+         <td>pointRadius</td><td>pointRadius</td><td></td><td>number</td><td>2.5</td>
+       </tr>
+     
+       <tr>
+         <td>data</td><td>data</td><td></td><td>ChartData</td><td>{xs: [], ys: [[]]}</td>
+       </tr>
+     
+       <tr>
+         <td>margin</td><td>margin</td><td></td><td>Margin</td><td>{top: 50, right: 40, bottom: 80, left: 80}</td>
+       </tr>
+     
+       <tr>
+         <td>colours</td><td>colours</td><td></td><td>string[]</td><td>[
+            "#FF6D75",
+            "#FFD23F",
+            "#14FFEC",
+            "#A88BEB",
+            "#FF9642",
+            "#53D8FB",
+            "#C0D860",
+            "#F25DFC",
+        ]</td>
+       </tr>
+     
+       <tr>
+         <td>scaleType</td><td>scaleType</td><td></td><td>'ratio' | 'fixed-height'</td><td>'fixed-height'</td>
+       </tr>
+     
+       <tr>
+         <td>width</td><td>width</td><td></td><td></td><td></td>
+       </tr>
+     
+       <tr>
+         <td>height</td><td>height</td><td></td><td>number</td><td>400</td>
+       </tr>
+     
+       <tr>
+         <td>smoothCurve</td><td>smoothCurve</td><td></td><td>boolean</td><td>false</td>
+       </tr>
+     
+       <tr>
+         <td>fillLine</td><td>fillLine</td><td></td><td>boolean</td><td>false</td>
+       </tr>
+     
+       <tr>
+         <td>xAxisLabel</td><td>xAxisLabel</td><td></td><td>string | null</td><td>null</td>
+       </tr>
+     
+       <tr>
+         <td>yAxisLabel</td><td>yAxisLabel</td><td></td><td>string | null</td><td>null</td>
+       </tr>
+     
+       <tr>
+         <td>svg</td><td></td><td></td><td>d3.Selection<SVGElement, unknown, null, undefined></td><td></td>
+       </tr>
+     
+       <tr>
+         <td>xScale</td><td></td><td></td><td>d3.ScaleTime<number, number></td><td></td>
+       </tr>
+     
+       <tr>
+         <td>yScale</td><td></td><td></td><td>d3.ScaleLinear<number, number></td><td></td>
+       </tr>
+     
+       <tr>
+         <td>xAxis</td><td></td><td></td><td>d3.Axis<number | { valueOf(): number }></td><td></td>
+       </tr>
+     
+       <tr>
+         <td>yAxis</td><td></td><td></td><td>d3.Axis<number | { valueOf(): number }></td><td></td>
+       </tr>
+     
+       <tr>
+         <td>initialWidth</td><td></td><td></td><td>number</td><td>600</td>
+       </tr>
+     
+       <tr>
+         <td>resizeObserver</td><td></td><td></td><td>ResizeObserver | null</td><td>null</td>
+       </tr>
+     
+       <tr>
+         <td>mouse</td><td></td><td></td><td>MouseController</td><td>new MouseController(this)</td>
        </tr>
      
    </table>
@@ -77,62 +217,18 @@
      </tr>
      
        <tr>
-         <td>sayHello</td><td>
-   
-   <table>
-     <tr>
-       <th>Name</th><th>Description</th><th>Type</th>
-     </tr>
-     
-       <tr>
-         <td>name</td><td>The name to say "Hello" to</td><td>string</td>
+         <td>setupChart</td><td></td><td></td><td></td>
        </tr>
      
-   </table>
- </td><td>Formats a greeting</td><td>string</td>
+       <tr>
+         <td>drawChart</td><td></td><td></td><td></td>
        </tr>
      
    </table>
  
+           
+         
        
-   <h3>Events</h3>
-   <table>
-     <tr>
-       <th>Name</th><th>Description</th>
-     </tr>
-     
-       <tr>
-         <td>count-changed</td><td>Indicates when the count changes</td>
-       </tr>
-     
-   </table>
-     
-       
-   <h3>Slots</h3>
-   <table>
-     <tr>
-       <th>Name</th><th>Description</th>
-     </tr>
-     
-       <tr>
-         <td>(default)</td><td>This element has a slot</td>
-       </tr>
-     
-   </table>
-   
-       
-   <h3>CSS Shadow Parts</h3>
-   <table>
-     <tr>
-       <th>Name</th><th>Description</th>
-     </tr>
-     
-       <tr>
-         <td>button</td><td>The button</td>
-       </tr>
-     
-   </table>
- 
        
        
    

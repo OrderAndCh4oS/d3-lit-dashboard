@@ -1,76 +1,84 @@
 ---
 layout: page.11ty.cjs
-title: <my-element> ⌲ Home
+title: <line-chart> ⌲ Home
 ---
 
-# &lt;my-element>
 
-`<my-element>` is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.
 
-## As easy as HTML
+# `line-chart` Web Component
 
-<section class="columns">
-  <div>
+A custom web component built with LitElement and D3.js for rendering line charts.
 
-`<my-element>` is just an HTML element. You can it anywhere you can use HTML!
+## 🚀 Features
 
-```html
-<my-element></my-element>
-```
+- 📱 **Responsive Design**: Adapts to the width of its container.
+- 🎨 **Custom Theming**: Supports both light and dark themes.
+- 🔍 **Tooltips**: Hover over data points to get more detailed information.
+- 🌊 **Smooth Curve Option**: Can render as a smooth curve or a straight line.
+- 📊 **Multiple Lines**: Supports rendering of multiple lines in one chart.
 
-  </div>
-  <div>
+## 📦 Attributes
 
-<my-element></my-element>
-
-  </div>
-</section>
-
-## Configure with attributes
-
-<section class="columns">
-  <div>
-
-`<my-element>` can be configured with attributed in plain HTML.
+The example showcases the following attributes:
 
 ```html
-<my-element name="HTML"></my-element>
+<line-chart id="chart" width="1280" height="400" xAxisLabel="Date" scaleType="ratio" 
+           yAxisLabel="Value" strokeWidth="4" pointRadius="4" smoothCurve="true" 
+           fillLine="true" theme="dark">
+</line-chart>
 ```
 
-  </div>
-  <div>
+- `id`: The unique identifier for the chart component. E.g., "chart".
+- `width`: Width of the chart. E.g., "1280".
+- `height`: Height of the chart. E.g., "400".
+- `xAxisLabel`: Label for the x-axis. E.g., "Date".
+- `yAxisLabel`: Label for the y-axis. E.g., "Value".
+- `scaleType`: Determines how the chart should scale. E.g., "ratio".
+- `strokeWidth`: Width of the line stroke. E.g., "4".
+- `pointRadius`: Radius of each data point in the chart. E.g., "4".
+- `smoothCurve`: Determines if the chart has smooth curves. Accepts "true" or "false".
+- `fillLine`: Determines if the area under the line is filled. Accepts "true" or "false".
+- `theme`: Chart theme. E.g., "dark".
 
-<my-element name="HTML"></my-element>
+## 📈 Sample Data and Chart Configuration
 
-  </div>
-</section>
+You can provide the chart with data and further configuration using JavaScript:
 
-## Declarative rendering
+```javascript
+const colours = [
+    "#E63946",
+    "#7cb06b",
+    "#6ab8bb",
+    "#457B9D",
+    "#cc34b3",
+    "#F4A261"
+];
 
-<section class="columns">
-  <div>
+const xs = Array.from({length: 7}, (_, i) => new Date('2023-01-0' + (i + 1)));
+const ys = xs.map(_ => Array.from({length: 6}, () => ~~(Math.random() * 100) + 10));
+const sampleData = {xs, ys};
 
-`<my-element>` can be used with declarative rendering libraries like Angular, React, Vue, and lit-html
-
-```js
-import {html, render} from 'lit-html';
-
-const name = 'lit-html';
-
-render(
-  html`
-    <h2>This is a &lt;my-element&gt;</h2>
-    <my-element .name=${name}></my-element>
-  `,
-  document.body
-);
+const chartElement = document.getElementById('chart');
+chartElement.data = sampleData;
+chartElement.colours = colours;
 ```
 
-  </div>
-  <div>
+In this example:
 
-<h2>This is a &lt;my-element&gt;</h2>
-<my-element name="lit-html"></my-element>
+- `colours`: An array containing the hex codes for the lines in the chart.
+- `xs`: An array representing the x-axis data. In this case, a sequence of dates.
+- `ys`: A multi-dimensional array that corresponds to y-axis data for the various lines in the chart.
+- `sampleData`: An object comprising `xs` and `ys` data that will be used for rendering the chart.
 
-  </div>
-</section>
+The last lines of the JavaScript code link the `sampleData` and `colours` to the `<line-chart>` element.
+
+## 🎨 Styling
+
+Customize the component's appearance using these CSS variables:
+
+- `--bg-color`: Background color of the chart.
+- `--axis-color`: Color of the axes.
+- `--axis-text-color`: Color of the axis labels.
+- `--tooltip-bg-color`: Background color of the tooltip.
+- `--tooltip-text-color`: Color of the tooltip text.
+- `--tooltip-radius`: Border radius of the tooltip.

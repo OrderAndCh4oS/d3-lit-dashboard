@@ -3,10 +3,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>&lt;my-element> Demo</title>
+    <title>&lt;line-chart> Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="/dist/my-element.js"></script>
+    <script type="module" src="/dist/line-chart.js"></script>
     <style>
       p {
         border: solid 1px blue;
@@ -15,8 +15,25 @@
     </style>
   </head>
   <body>
-    <my-element>
-      <p>This is child content</p>
-    </my-element>
+  <line-chart id="chart" width="1280" height="400" xAxisLabel="Date" scaleType="ratio" yAxisLabel="Value"
+              strokeWidth="4" pointRadius="4" smoothCurve="true" fillLine="true" theme="dark"></line-chart>
+  <script>
+    const colours = [
+      "#E63946",
+      "#7cb06b",
+      "#6ab8bb",
+      "#457B9D",
+      "#cc34b3",
+      "#F4A261"
+    ];
+
+    const xs = Array.from({length: 7}, (_, i) => new Date('2023-01-0' + (i + 1)));
+    const ys = xs.map(_ => Array.from({length: 6}, () => ~~(Math.random() * 100) + 10));
+    const sampleData = {xs, ys};
+
+    const chartElement = document.getElementById('chart');
+    chartElement.data = sampleData;
+    chartElement.colours = colours;
+  </script>
   </body>
 </html>

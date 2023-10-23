@@ -4,18 +4,18 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {MyElement} from '../my-element.js';
+import {MyElement} from '../src/my-element';
 
 import {fixture, assert} from '@open-wc/testing';
 import {html} from 'lit/static-html.js';
 
-suite('my-element', () => {
-  test('is defined', () => {
+describe('my-element', () => {
+  it('is defined', () => {
     const el = document.createElement('my-element');
     assert.instanceOf(el, MyElement);
   });
 
-  test('renders with default values', async () => {
+  it('renders with default values', async () => {
     const el = await fixture(html`<my-element></my-element>`);
     assert.shadowDom.equal(
       el,
@@ -27,7 +27,7 @@ suite('my-element', () => {
     );
   });
 
-  test('renders with a set name', async () => {
+  it('renders with a set name', async () => {
     const el = await fixture(html`<my-element name="Test"></my-element>`);
     assert.shadowDom.equal(
       el,
@@ -39,7 +39,7 @@ suite('my-element', () => {
     );
   });
 
-  test('handles a click', async () => {
+  it('handles a click', async () => {
     const el = (await fixture(html`<my-element></my-element>`)) as MyElement;
     const button = el.shadowRoot!.querySelector('button')!;
     button.click();
@@ -54,7 +54,7 @@ suite('my-element', () => {
     );
   });
 
-  test('styling applied', async () => {
+  it('styling applied', async () => {
     const el = (await fixture(html`<my-element></my-element>`)) as MyElement;
     await el.updateComplete;
     assert.equal(getComputedStyle(el).paddingTop, '16px');

@@ -24,7 +24,7 @@ The example showcases the following attributes:
 ```html
 <line-chart id="chart" width="1280" height="400" xAxisLabel="Date" scaleType="ratio" 
            yAxisLabel="Value" strokeWidth="4" pointRadius="4" smoothCurve="true" 
-           fillLine="true" theme="dark">
+           theme="dark">
 </line-chart>
 ```
 
@@ -37,7 +37,6 @@ The example showcases the following attributes:
 - `strokeWidth`: Width of the line stroke. E.g., "4".
 - `pointRadius`: Radius of each data point in the chart. E.g., "4".
 - `smoothCurve`: Determines if the chart has smooth curves. Accepts "true" or "false".
-- `fillLine`: Determines if the area under the line is filled. Accepts "true" or "false".
 - `theme`: Chart theme. E.g., "dark".
 
 ## 📈 Sample Data and Chart Configuration

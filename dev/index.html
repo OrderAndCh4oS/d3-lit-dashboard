@@ -15,25 +15,48 @@
     </style>
   </head>
   <body>
-  <line-chart id="chart" width="1280" height="400" xAxisLabel="Date" scaleType="ratio" yAxisLabel="Value"
-              strokeWidth="4" pointRadius="4" smoothCurve="true" fillLine="true" theme="dark"></line-chart>
-  <script>
-    const colours = [
-      "#E63946",
-      "#7cb06b",
-      "#6ab8bb",
-      "#457B9D",
-      "#cc34b3",
-      "#F4A261"
-    ];
+  <line-chart
+    id="chartOne"
+    width="1280"
+    height="400"
+    xAxisLabel="Date"
+    yAxisLabel="Value"
+  ></line-chart>
+    <line-chart
+      id="chartTwo"
+      width="1280"
+      height="400"
+      scaleType="ratio"
+      xAxisLabel="Date"
+      yAxisLabel="Value"
+      strokeWidth="4"
+      pointRadius="4"
+      smoothCurve="true"
+      theme="dark"
+    ></line-chart>
+    <script>
+      const xs = Array.from(
+        {length: 7},
+        (_, i) => new Date('2023-01-0' + (i + 1))
+      );
+      const ys = xs.map((_) =>
+        Array.from({length: 6}, () => ~~(Math.random() * 100) + 10)
+      );
+      const sampleData = {xs, ys};
 
-    const xs = Array.from({length: 7}, (_, i) => new Date('2023-01-0' + (i + 1)));
-    const ys = xs.map(_ => Array.from({length: 6}, () => ~~(Math.random() * 100) + 10));
-    const sampleData = {xs, ys};
+      const chartElementOne = document.getElementById('chartOne');
+      chartElementOne.data = sampleData;
 
-    const chartElement = document.getElementById('chart');
-    chartElement.data = sampleData;
-    chartElement.colours = colours;
-  </script>
+      const chartElementTwo = document.getElementById('chartTwo');
+      chartElementTwo.data = sampleData;
+      chartElementTwo.colours = [
+        '#E63946',
+        '#7cb06b',
+        '#6ab8bb',
+        '#457B9D',
+        '#cc34b3',
+        '#F4A261',
+      ];
+    </script>
   </body>
 </html>

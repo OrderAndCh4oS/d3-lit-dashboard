@@ -4,6 +4,37 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LineChart",
+          "declaration": {
+            "name": "LineChart",
+            "module": "./line-chart"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LineChartComponent",
+          "declaration": {
+            "name": "LineChartComponent",
+            "module": "./line-chart-react"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MouseController",
+          "declaration": {
+            "name": "MouseController",
+            "module": "./mouse-controller"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/line-chart-react.ts",
       "declarations": [
         {
@@ -91,7 +122,7 @@
               "type": {
                 "text": "string[]"
               },
-              "default": "[\n            \"#FF6D75\",\n            \"#FFD23F\",\n            \"#14FFEC\",\n            \"#A88BEB\",\n            \"#FF9642\",\n            \"#53D8FB\",\n            \"#C0D860\",\n            \"#F25DFC\",\n        ]",
+              "default": "[\n      '#FF6D75',\n      '#FFD23F',\n      '#14FFEC',\n      '#A88BEB',\n      '#FF9642',\n      '#53D8FB',\n      '#C0D860',\n      '#F25DFC',\n    ]",
               "attribute": "colours"
             },
             {
@@ -128,15 +159,6 @@
             },
             {
               "kind": "field",
-              "name": "fillLine",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "fillLine"
-            },
-            {
-              "kind": "field",
               "name": "xAxisLabel",
               "type": {
                 "text": "string | null"
@@ -152,6 +174,15 @@
               },
               "default": "null",
               "attribute": "yAxisLabel"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark' | null | undefined"
+              },
+              "default": "undefined",
+              "attribute": "theme"
             },
             {
               "kind": "field",
@@ -181,7 +212,7 @@
               "kind": "field",
               "name": "xAxis",
               "type": {
-                "text": "d3.Axis<number | { valueOf(): number }>"
+                "text": "d3.Axis<number | {valueOf(): number}>"
               },
               "privacy": "private"
             },
@@ -189,7 +220,7 @@
               "kind": "field",
               "name": "yAxis",
               "type": {
-                "text": "d3.Axis<number | { valueOf(): number }>"
+                "text": "d3.Axis<number | {valueOf(): number}>"
               },
               "privacy": "private"
             },
@@ -275,7 +306,7 @@
               "type": {
                 "text": "string[]"
               },
-              "default": "[\n            \"#FF6D75\",\n            \"#FFD23F\",\n            \"#14FFEC\",\n            \"#A88BEB\",\n            \"#FF9642\",\n            \"#53D8FB\",\n            \"#C0D860\",\n            \"#F25DFC\",\n        ]",
+              "default": "[\n      '#FF6D75',\n      '#FFD23F',\n      '#14FFEC',\n      '#A88BEB',\n      '#FF9642',\n      '#53D8FB',\n      '#C0D860',\n      '#F25DFC',\n    ]",
               "fieldName": "colours"
             },
             {
@@ -307,14 +338,6 @@
               "fieldName": "smoothCurve"
             },
             {
-              "name": "fillLine",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "fillLine"
-            },
-            {
               "name": "xAxisLabel",
               "type": {
                 "text": "string | null"
@@ -329,6 +352,17 @@
               },
               "default": "null",
               "fieldName": "yAxisLabel"
+            },
+            {
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark' | null | undefined"
+              },
+              "default": "undefined",
+              "resolveInitializer": {
+                "module": "src/line-chart.ts"
+              },
+              "fieldName": "theme"
             }
           ],
           "superclass": {

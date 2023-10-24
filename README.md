@@ -21,9 +21,18 @@ To begin using the `line-chart` web component in your project, ensure you've loa
 Embed the `line-chart` element in your HTML with its full attributes:
 
 ```html
-<line-chart id="chart" width="1280" height="400" xAxisLabel="Date" scaleType="ratio" 
-           yAxisLabel="Value" strokeWidth="4" pointRadius="4" smoothCurve="true" 
-           fillLine="true" theme="dark">
+<line-chart
+  id="chart"
+  width="1280"
+  height="400"
+  xAxisLabel="Date"
+  scaleType="ratio"
+  yAxisLabel="Value"
+  strokeWidth="4"
+  pointRadius="4"
+  smoothCurve="true"
+  theme="dark"
+>
 </line-chart>
 ```
 
@@ -33,16 +42,18 @@ Using JavaScript, provide the chart with your data:
 
 ```javascript
 const colours = [
-    "#E63946",
-    "#7cb06b",
-    "#6ab8bb",
-    "#457B9D",
-    "#cc34b3",
-    "#F4A261"
+  '#E63946',
+  '#7cb06b',
+  '#6ab8bb',
+  '#457B9D',
+  '#cc34b3',
+  '#F4A261',
 ];
 
 const xs = Array.from({length: 7}, (_, i) => new Date('2023-01-0' + (i + 1)));
-const ys = xs.map(_ => Array.from({length: 6}, () => ~~(Math.random() * 100) + 10));
+const ys = xs.map((_) =>
+  Array.from({length: 6}, () => ~~(Math.random() * 100) + 10)
+);
 const sampleData = {xs, ys};
 
 const chartElement = document.getElementById('chart');
@@ -56,12 +67,12 @@ You can style the `line-chart` web component using the provided CSS custom prope
 
 ```css
 line-chart {
-    --bg-color: #2e2e2e;         /* Background color of the chart */
-    --axis-color: #ffffff;       /* Color of the chart's axes */
-    --axis-text-color: #d1d1d1;  /* Color of the axis labels */
-    --tooltip-bg-color: #333;    /* Background color of tooltips */
-    --tooltip-text-color: #fff;  /* Text color within tooltips */
-    --tooltip-radius: 5px;       /* Border radius for tooltips */
+  --bg-color: #2e2e2e; /* Background color of the chart */
+  --axis-color: #ffffff; /* Color of the chart's axes */
+  --axis-text-color: #d1d1d1; /* Color of the axis labels */
+  --tooltip-bg-color: #333; /* Background color of tooltips */
+  --tooltip-text-color: #fff; /* Text color within tooltips */
+  --tooltip-radius: 5px; /* Border radius for tooltips */
 }
 ```
 

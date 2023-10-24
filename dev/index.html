@@ -7,21 +7,16 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="/dist/line-chart.js"></script>
-    <style>
-      p {
-        border: solid 1px blue;
-        padding: 8px;
-      }
-    </style>
   </head>
   <body>
-  <line-chart
-    id="chartOne"
-    width="1280"
-    height="400"
-    xAxisLabel="Date"
-    yAxisLabel="Value"
-  ></line-chart>
+  <div style="padding: 20px">
+    <line-chart
+      id="chartOne"
+      width="1280"
+      height="400"
+      xAxisLabel="Date"
+      yAxisLabel="Value"
+    ></line-chart>
     <line-chart
       id="chartTwo"
       width="1280"
@@ -34,6 +29,7 @@
       smoothCurve="true"
       theme="dark"
     ></line-chart>
+  </div>
     <script>
       const xs = Array.from(
         {length: 7},

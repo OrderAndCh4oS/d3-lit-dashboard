@@ -69,7 +69,7 @@
                 "text": "array"
               },
               "static": true,
-              "default": "['ratio', 'fixed-height']"
+              "default": "[\"ratio\", \"fixed-height\"]"
             },
             {
               "kind": "field",
@@ -77,8 +77,58 @@
               "type": {
                 "text": "string"
               },
-              "default": "'line-chart'",
+              "default": "\"line-chart\"",
               "attribute": "id"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "type": {
+                "text": "ChartData"
+              },
+              "default": "{ xs: [], ys: [[]], labels: [] }",
+              "attribute": "data"
+            },
+            {
+              "kind": "field",
+              "name": "margin",
+              "type": {
+                "text": "Margin"
+              },
+              "default": "{ top: 50, right: 40, bottom: 80, left: 80 }",
+              "attribute": "margin"
+            },
+            {
+              "kind": "field",
+              "name": "colours",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[\n      \"#FF6D75\",\n      \"#FFD23F\",\n      \"#14FFEC\",\n      \"#A88BEB\",\n      \"#FF9642\",\n      \"#53D8FB\",\n      \"#C0D860\",\n      \"#F25DFC\"\n    ]",
+              "attribute": "colours"
+            },
+            {
+              "kind": "field",
+              "name": "scaleType",
+              "type": {
+                "text": "\"ratio\" | \"fixed-height\""
+              },
+              "default": "\"fixed-height\"",
+              "attribute": "scaleType"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "400",
+              "attribute": "height"
             },
             {
               "kind": "field",
@@ -97,56 +147,6 @@
               },
               "default": "2.5",
               "attribute": "pointRadius"
-            },
-            {
-              "kind": "field",
-              "name": "data",
-              "type": {
-                "text": "ChartData"
-              },
-              "default": "{xs: [], ys: [[]]}",
-              "attribute": "data"
-            },
-            {
-              "kind": "field",
-              "name": "margin",
-              "type": {
-                "text": "Margin"
-              },
-              "default": "{top: 50, right: 40, bottom: 80, left: 80}",
-              "attribute": "margin"
-            },
-            {
-              "kind": "field",
-              "name": "colours",
-              "type": {
-                "text": "string[]"
-              },
-              "default": "[\n      '#FF6D75',\n      '#FFD23F',\n      '#14FFEC',\n      '#A88BEB',\n      '#FF9642',\n      '#53D8FB',\n      '#C0D860',\n      '#F25DFC',\n    ]",
-              "attribute": "colours"
-            },
-            {
-              "kind": "field",
-              "name": "scaleType",
-              "type": {
-                "text": "'ratio' | 'fixed-height'"
-              },
-              "default": "'fixed-height'",
-              "attribute": "scaleType"
-            },
-            {
-              "kind": "field",
-              "name": "width",
-              "attribute": "width"
-            },
-            {
-              "kind": "field",
-              "name": "height",
-              "type": {
-                "text": "number"
-              },
-              "default": "400",
-              "attribute": "height"
             },
             {
               "kind": "field",
@@ -179,7 +179,7 @@
               "kind": "field",
               "name": "theme",
               "type": {
-                "text": "'light' | 'dark' | null | undefined"
+                "text": "\"light\" | \"dark\" | null | undefined"
               },
               "default": "undefined",
               "attribute": "theme"
@@ -212,7 +212,7 @@
               "kind": "field",
               "name": "xAxis",
               "type": {
-                "text": "d3.Axis<number | {valueOf(): number}>"
+                "text": "d3.Axis<number | { valueOf(): number }>"
               },
               "privacy": "private"
             },
@@ -220,7 +220,7 @@
               "kind": "field",
               "name": "yAxis",
               "type": {
-                "text": "d3.Axis<number | {valueOf(): number}>"
+                "text": "d3.Axis<number | { valueOf(): number }>"
               },
               "privacy": "private"
             },
@@ -266,8 +266,52 @@
               "type": {
                 "text": "string"
               },
-              "default": "'line-chart'",
+              "default": "\"line-chart\"",
               "fieldName": "id"
+            },
+            {
+              "name": "data",
+              "type": {
+                "text": "ChartData"
+              },
+              "default": "{ xs: [], ys: [[]], labels: [] }",
+              "fieldName": "data"
+            },
+            {
+              "name": "margin",
+              "type": {
+                "text": "Margin"
+              },
+              "default": "{ top: 50, right: 40, bottom: 80, left: 80 }",
+              "fieldName": "margin"
+            },
+            {
+              "name": "colours",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[\n      \"#FF6D75\",\n      \"#FFD23F\",\n      \"#14FFEC\",\n      \"#A88BEB\",\n      \"#FF9642\",\n      \"#53D8FB\",\n      \"#C0D860\",\n      \"#F25DFC\"\n    ]",
+              "fieldName": "colours"
+            },
+            {
+              "name": "scaleType",
+              "type": {
+                "text": "\"ratio\" | \"fixed-height\""
+              },
+              "default": "\"fixed-height\"",
+              "fieldName": "scaleType"
+            },
+            {
+              "name": "width",
+              "fieldName": "width"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "400",
+              "fieldName": "height"
             },
             {
               "name": "strokeWidth",
@@ -284,50 +328,6 @@
               },
               "default": "2.5",
               "fieldName": "pointRadius"
-            },
-            {
-              "name": "data",
-              "type": {
-                "text": "ChartData"
-              },
-              "default": "{xs: [], ys: [[]]}",
-              "fieldName": "data"
-            },
-            {
-              "name": "margin",
-              "type": {
-                "text": "Margin"
-              },
-              "default": "{top: 50, right: 40, bottom: 80, left: 80}",
-              "fieldName": "margin"
-            },
-            {
-              "name": "colours",
-              "type": {
-                "text": "string[]"
-              },
-              "default": "[\n      '#FF6D75',\n      '#FFD23F',\n      '#14FFEC',\n      '#A88BEB',\n      '#FF9642',\n      '#53D8FB',\n      '#C0D860',\n      '#F25DFC',\n    ]",
-              "fieldName": "colours"
-            },
-            {
-              "name": "scaleType",
-              "type": {
-                "text": "'ratio' | 'fixed-height'"
-              },
-              "default": "'fixed-height'",
-              "fieldName": "scaleType"
-            },
-            {
-              "name": "width",
-              "fieldName": "width"
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "number"
-              },
-              "default": "400",
-              "fieldName": "height"
             },
             {
               "name": "smoothCurve",
@@ -356,7 +356,7 @@
             {
               "name": "theme",
               "type": {
-                "text": "'light' | 'dark' | null | undefined"
+                "text": "\"light\" | \"dark\" | null | undefined"
               },
               "default": "undefined",
               "resolveInitializer": {

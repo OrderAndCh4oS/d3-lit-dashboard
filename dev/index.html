@@ -36,9 +36,10 @@
         (_, i) => new Date('2023-01-0' + (i + 1))
       );
       const ys = xs.map((_) =>
-        Array.from({length: 6}, () => ~~(Math.random() * 100) + 10)
+        Array.from({length: 4}, () => ~~(Math.random() * 100) + 10)
       );
-      const sampleData = {xs, ys};
+      const labels = ["Line one", "Line two", "Line three", "Line four"];
+      const sampleData = {xs, ys, labels};
 
       const chartElementOne = document.getElementById('chartOne');
       chartElementOne.data = sampleData;

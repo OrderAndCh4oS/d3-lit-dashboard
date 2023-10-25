@@ -3,8 +3,6 @@ layout: page.11ty.cjs
 title: <line-chart> ⌲ Home
 ---
 
-
-
 # `line-chart` Web Component
 
 A custom web component built with LitElement and D3.js for rendering line charts.
@@ -81,3 +79,60 @@ Customize the component's appearance using these CSS variables:
 - `--tooltip-bg-color`: Background color of the tooltip.
 - `--tooltip-text-color`: Color of the tooltip text.
 - `--tooltip-radius`: Border radius of the tooltip.
+
+
+## 📈 Example Charts
+
+### Defaults
+
+<div>
+<line-chart
+    id="chartOne"
+    width="1280"
+    height="400"
+    xAxisLabel="Date"
+    yAxisLabel="Value"
+></line-chart>
+<script>
+      const xs = Array.from(
+        {length: 7},
+        (_, i) => new Date('2023-01-0' + (i + 1))
+      );
+      const ys = xs.map((_) =>
+        Array.from({length: 4}, () => ~~(Math.random() * 100) + 10)
+      );
+      const labels = ["Line one", "Line two", "Line three", "Line four"];
+      const sampleData = {xs, ys, labels};
+      const chartElementOne = document.getElementById('chartOne');
+      chartElementOne.data = sampleData;
+</script>
+</div>
+
+### Customised
+
+<div>
+    <line-chart
+      id="chartTwo"
+      width="1280"
+      height="400"
+      scaleType="ratio"
+      xAxisLabel="Date"
+      yAxisLabel="Value"
+      strokeWidth="4"
+      pointRadius="4"
+      smoothCurve="true"
+      theme="dark"
+    ></line-chart>
+<script>
+  const chartElementTwo = document.getElementById('chartTwo');
+  chartElementTwo.data = sampleData;
+  chartElementTwo.colours = [
+    '#E63946',
+    '#7cb06b',
+    '#6ab8bb',
+    '#457B9D',
+    '#cc34b3',
+    '#F4A261',
+  ];
+</script>
+</div>

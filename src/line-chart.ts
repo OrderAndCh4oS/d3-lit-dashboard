@@ -369,7 +369,8 @@ export class LineChart extends LitElement {
       this.svg
         .append("path")
         .datum(lineData)
-        .attr("class", `line line${index}`)
+        .attr("id", `line-${index}`)
+        .attr("class", `line line-${index}`)
         .attr(
           "style",
           `stroke: ${
@@ -466,10 +467,21 @@ export class LineChart extends LitElement {
       this.data.labels.forEach((label, index) => {
         const legendGroup = legend
           .append('g')
-          .attr('transform', `translate(${padding}, ${index * legendSpacing + padding})`);
+          .attr('transform', `translate(${padding}, ${index * legendSpacing + padding})`)
+          .style("cursor", "pointer")
+          .on("click", () => {
+            const line = this.svg.select(`#line-${index}`);
+            line.style("opacity", line.style('opacity') ^ 1);
+            const rect = this.svg.select(`#rect-${index}`);
+            rect.style("opacity", rect.style('opacity') ^ 1);
+            const circles = this.svg.selectAll(`.circle-${index}`);
+            circles.style("opacity", circles.style('opacity') ^ 1);
+          })
+        ;
 
         legendGroup
           .append('rect')
+          .attr('id', `rect-${index}`)
           .attr('width', `${legendSize}px`)
           .attr('height', `${legendSize}px`)
           .style('fill', this.colours[index % this.colours.length]);
@@ -484,7 +496,6 @@ export class LineChart extends LitElement {
           .text(label);
       });
     }
-
   }
 
   override render() {

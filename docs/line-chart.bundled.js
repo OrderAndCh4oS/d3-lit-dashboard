@@ -5444,7 +5444,8 @@ let LineChart = class LineChart extends s {
             this.svg
                 .append("path")
                 .datum(lineData)
-                .attr("class", `line line${index}`)
+                .attr("id", `line-${index}`)
+                .attr("class", `line line-${index}`)
                 .attr("style", `stroke: ${this.colours[index % this.colours.length]}; stroke-width: ${this.strokeWidth}px`)
                 .attr("d", lineGenerator)
                 .attr("clip-path", "url(#clip)"); // Apply clipping here;
@@ -5515,12 +5516,25 @@ let LineChart = class LineChart extends s {
             this.data.labels.forEach((label, index) => {
                 const legendGroup = legend
                     .append('g')
-                    .attr('transform', `translate(${padding}, ${index * legendSpacing + padding})`);
+                    .attr('transform', `translate(${padding}, ${index * legendSpacing + padding})`)
+                    .style("cursor", "pointer")
+                    .on("click", () => {
+                    const line = this.svg.select(`#line-${index}`);
+                    const currentOpacity = line.style('opacity');
+                    line.style("opacity", currentOpacity ^ 1);
+                    const rect = this.svg.select(`#rect-${index}`);
+                    rect.attr("class", !Number(currentOpacity) ? "" : "no-fill");
+                    const circles = this.svg.selectAll(`.circle-${index}`);
+                    circles.style("opacity", currentOpacity ^ 1);
+                });
                 legendGroup
                     .append('rect')
+                    .attr('id', `rect-${index}`)
                     .attr('width', `${legendSize}px`)
                     .attr('height', `${legendSize}px`)
-                    .style('fill', this.colours[index % this.colours.length]);
+                    .style('fill', this.colours[index % this.colours.length])
+                    .style('stroke', this.colours[index % this.colours.length])
+                    .style('stroke-width', "1px");
                 legendGroup
                     .append('text')
                     .attr('x', `${legendSize + 5}px`)
@@ -5636,6 +5650,10 @@ LineChart.styles = i$2 `
       border: 0;
       border-radius: var(--tooltip-radius);
       pointer-events: none;
+    }
+    
+    .no-fill {
+      fill-opacity: 0;
     }
   `;
 __decorate([

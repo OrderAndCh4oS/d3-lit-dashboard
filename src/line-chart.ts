@@ -118,6 +118,10 @@ export class LineChart extends LitElement {
       border-radius: var(--tooltip-radius);
       pointer-events: none;
     }
+    
+    .no-fill {
+      fill-opacity: 0;
+    }
   `;
 
   @property({ type: String })
@@ -471,11 +475,12 @@ export class LineChart extends LitElement {
           .style("cursor", "pointer")
           .on("click", () => {
             const line = this.svg.select(`#line-${index}`);
-            line.style("opacity", line.style('opacity') ^ 1);
+            const currentOpacity = line.style('opacity');
+            line.style("opacity", currentOpacity ^ 1);
             const rect = this.svg.select(`#rect-${index}`);
-            rect.style("opacity", rect.style('opacity') ^ 1);
+            rect.attr("class", !Number(currentOpacity) ? "" : "no-fill");
             const circles = this.svg.selectAll(`.circle-${index}`);
-            circles.style("opacity", circles.style('opacity') ^ 1);
+            circles.style("opacity", currentOpacity ^ 1);
           })
         ;
 
@@ -484,7 +489,9 @@ export class LineChart extends LitElement {
           .attr('id', `rect-${index}`)
           .attr('width', `${legendSize}px`)
           .attr('height', `${legendSize}px`)
-          .style('fill', this.colours[index % this.colours.length]);
+          .style('fill', this.colours[index % this.colours.length])
+          .style('stroke', this.colours[index % this.colours.length])
+          .style('stroke-width', "1px");
 
         legendGroup
           .append('text')

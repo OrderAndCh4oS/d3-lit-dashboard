@@ -22,14 +22,6 @@
             "name": "LineChartComponent",
             "module": "./line-chart-react"
           }
-        },
-        {
-          "kind": "js",
-          "name": "MouseController",
-          "declaration": {
-            "name": "MouseController",
-            "module": "./mouse-controller"
-          }
         }
       ]
     },
